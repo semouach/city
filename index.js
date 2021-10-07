@@ -113,10 +113,21 @@ cityModel.insertMany(cities).then(response =>{
     console.error(error)
 });
 
-cities()
-.aggregate()
-.group
+//exo 1
+cityModel.aggregate()
+.group(
+    { 
+      _id: "$department", 
+      totaldepartment: {$sum: "$population"}
+    })
 
+//exo 3
+// cityModel.aggregate()
+// .group(
+//     { 
+//       _id: "$department", 
+//       totaldepartment: {$avg: "$population"}
+//     })
 
 // Connection à MongoDB
 mongoose.connect('mongodb://localhost:27017/demo', (error) => {
